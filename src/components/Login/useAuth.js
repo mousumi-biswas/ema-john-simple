@@ -1,20 +1,20 @@
-import React, { useContext, useEffect } from "react";
-import { useState, createContext } from "react";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from "../../firebase.config";
-import { Route, Redirect } from "react-router-dom";
+import React, { useState, createContext, useContext, useEffect } from "react";
+import { Redirect, Route } from "react-router-dom";
 
 firebase.initializeApp(firebaseConfig);
 
 const AuthContext = createContext();
 
-export const AuthContextProvider = props => {
+export const AuthContextProvider = (props) => {
   const auth = Auth();
   return (
     <AuthContext.Provider value={auth}>{props.children}</AuthContext.Provider>
   );
 };
+
 export const useAuth = () => useContext(AuthContext);
 
 export const PrivateRoute = ({ children, ...rest }) => {
@@ -29,7 +29,7 @@ export const PrivateRoute = ({ children, ...rest }) => {
           <Redirect
             to={{
               pathname: "/login",
-              state: { from: location }
+              state: { from: location },
             }}
           />
         )
@@ -38,8 +38,8 @@ export const PrivateRoute = ({ children, ...rest }) => {
   );
 };
 
-const getUser = user => {
-  const { displayName, email, photoURL } = user;
+const getUser = (usr) => {
+  const { displayName, email, photoURL } = usr;
   return { name: displayName, email, photo: photoURL };
 };
 
@@ -51,16 +51,14 @@ const Auth = () => {
     return firebase
       .auth()
       .signInWithPopup(provider)
-      .then(res => {
-        const signedInUser = getUser(res.user);
-
+      .then((result) => {
+        const signedInUser = getUser(result.user);
         setUser(signedInUser);
-        return res.user;
+        return user;
       })
-      .catch(err => {
-        setUser(null);
-
-        return err.message;
+      .catch((error) => {
+        console.log(error.message);
+        return error.message;
       });
   };
 
@@ -68,21 +66,22 @@ const Auth = () => {
     return firebase
       .auth()
       .signOut()
-      .then(function() {
+      .then(() => {
         setUser(null);
-        return true;
+        console.log("logged out");
       })
-      .catch(function(error) {
-        console.log(error);
-        return false;
+      .catch((error) => {
+        console.log(error.message);
       });
   };
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        const currUser = getUser(user);
-        setUser(currUser);
+    firebase.auth().onAuthStateChanged(function (usr) {
+      if (usr) {
+        const currentUser = getUser(usr);
+        setUser(currentUser);
+      } else {
+        // No user is signed in.
       }
     });
   }, []);
@@ -90,7 +89,7 @@ const Auth = () => {
   return {
     user,
     signInWithGoogle,
-    signOut
+    signOut,
   };
 };
 

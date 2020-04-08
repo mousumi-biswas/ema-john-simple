@@ -31,7 +31,7 @@ const Review = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        //console.log(data);
         const cartProducts = productKeys.map((key) => {
           const product = data.find((pd) => pd.key === key);
           product.quantity = savedCart[key];

@@ -1,0 +1,29 @@
+[debug] [2020-04-07T09:45:50.996Z] ----------------------------------------------------------------------
+[debug] [2020-04-07T09:45:51.004Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\cv\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2020-04-07T09:45:51.005Z] CLI Version:   7.15.1
+[debug] [2020-04-07T09:45:51.005Z] Platform:      win32
+[debug] [2020-04-07T09:45:51.005Z] Node Version:  v11.4.0
+[debug] [2020-04-07T09:45:51.099Z] Time:          Tue Apr 07 2020 15:45:51 GMT+0600 (Bangladesh Standard Time)
+[debug] [2020-04-07T09:45:51.099Z] ----------------------------------------------------------------------
+[debug] [2020-04-07T09:45:51.099Z] 
+[debug] [2020-04-07T09:45:51.215Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-04-07T09:45:51.217Z] > authorizing via signed-in user
+[debug] [2020-04-07T09:45:51.217Z] [iam] checking project ema-john-simple-5853e for permissions ["firebase.projects.get"]
+[debug] [2020-04-07T09:45:51.224Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-04-07T09:45:51.225Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-04-07T09:45:51.685Z] <<< HTTP RESPONSE 200
+[debug] [2020-04-07T09:45:51.733Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/ema-john-simple-5853e:testIamPermissions  
+
+[debug] [2020-04-07T09:45:53.295Z] <<< HTTP RESPONSE 200
+[debug] [2020-04-07T09:45:53.299Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/ema-john-simple-5853e  
+ 
+[debug] [2020-04-07T09:45:53.840Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\cv\Desktop\Web-Development\Projects\ema-john-simple'...
+[info] 
+[debug] [2020-04-07T09:45:53.874Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/ema-john-simple-5853e/webApps/-/config  
+ 
+[debug] [2020-04-07T09:45:54.890Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: build
+[info] +  hosting: Local server: http://localhost:5000
